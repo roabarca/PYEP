@@ -15,7 +15,7 @@ router.post("/register/project", async (req,res) => {
             description: req.body.description,
             project_manager: req.body.pm,
             client: req.body.client,
-            state: false,
+            finished: false,
         });
         return res.send(project);
     } catch (error) {

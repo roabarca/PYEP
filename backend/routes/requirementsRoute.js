@@ -4,7 +4,11 @@ const { Requirement } = require("../models");
 
 router.get("/", async (req, res) => {
     try {
-        const project = await Requirement.findAll();
+        const project = await Requirement.findAll(/*{
+            where: {
+                project: req.params.project,
+            }
+        }*/);
         return res.send(project);
     } catch (error) {
         res.status(400).send(error);
@@ -18,7 +22,7 @@ router.post("/add", async (req, res) => {
             description: req.body.description,
             developer: req.body.dev,
             price: req.body.price,
-            state: false,
+            finished: false,
             project: req.body.project,
         });
         return res.send(project);
@@ -27,12 +31,50 @@ router.post("/add", async (req, res) => {
     }
 })
 
-router.put("/edit", (req, res) => {
-    //se edita un requisitos
+router.put("/edit", async (req, res) => {
+    try {
+        requi = await Requirement.findOne({
+            where: {
+                id: req.body.id,
+            }
+        })
+        if(!requi) return res.status(400).send("Requisito no existente");
+
+        await requi.update({
+            name: req.body.name,
+            description: req.body.description,
+            developer: req.body.developer,
+            price: req.body.price,
+            project: req.body.project,
+                where: {
+                    id: req.body.id,
+                }
+            })
+        res.send(requi);
+    } catch (error) {
+        res.status(400).send(error);
+    }
 })
 
-router.delete("/delete", (req, res) => {
-    //se borra un requisitos
+
+router.delete("/delete", async (req, res) => {
+    try {
+        requi = await Requirement.findOne({
+            where: {
+                id: req.body.id,
+            }
+        })
+        if(!requi) return res.status(400).send("Requisito no existente");
+
+        await requi.destroy({
+            where: {
+                id: req.body.id,
+            }
+        })
+        res.send(requi);
+    } catch (error) {
+        res.status(400).send(error);
+    }
 })
 
 module.exports = router;
