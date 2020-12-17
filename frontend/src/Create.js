@@ -5,8 +5,6 @@ import {createProyect} from './redux/actions/proyectActions.js';
 
 
 
-
-
 //Analista crea proyecto
 function Create(props) {
 	
@@ -37,7 +35,7 @@ function Create(props) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		axios.post("localhost:4000/analyst/register/project", {
+		axios.post("http://localhost:4000/register/project", {
 			name: name,
 			description: description,
 			project_manager: project_manager,
@@ -47,10 +45,8 @@ function Create(props) {
 			
 		}).then((data) => {
 			
-			setEstado('OK');
-			console.log(data);
-		}).catch((error) => {
-			setEstado('ERROR')
+			
+			
 		});
 	}
 	

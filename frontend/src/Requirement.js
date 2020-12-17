@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
-//import {createRequirement} from './redux/actions/requerimentAction.js';
 
 function Requirement(props) {
 	
@@ -10,49 +9,20 @@ function Requirement(props) {
 	const [description, setDescription] = useState('');
 	const [developer, setDeveloper] = useState('');
 	const [price, setPrice] = useState('');
-	//const [state, setState] = useState('');
+	const [state, setState] = useState('');
 	const [project, setProject] = useState('');
-	const [estado, setEstado] = useState('');
 
-	/*const handleSubmit = (e) => {
-		e.preventDefault();
-		axios.post("http://localhost:4000/analyst/requirement", {
-			name: name,
-			description: description,
-			developer: developer,
-			price: price,
-			project: project
-		
-		}).then((data) => {
+	/*axios.get("http://localhost:4000/...requirementsRoute), {
 
-			setEstado('OK');
-			console.log(data);
-			
-		}).catch((error) => {
-			setEstado('ERROR')
-		});
-	}
+		name: name,
+        description: description,
+        developer: developer,
+        price: price,
+        state: state,
+        project: project
 	}*/ 
 	
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		axios.post("http://localhost:4000/analyst/requirement", {
-			name: name,
-			description: description,
-			developer: developer,
-			price: price,
-			
-			project: project
-		
-		}).then((data) => {
-
-			setEstado('OK');
-			console.log(data);
-			
-		}).catch((error) => {
-			setEstado('ERROR')
-		});
-	}
+	
 	
 	return(
 				<Table striped bordered hover variant="dark">
@@ -63,7 +33,7 @@ function Requirement(props) {
 					<th>Desarrolador</th>
 					<th>Precio</th>
 					<th>Estado</th>
-					<th>Poryecto</th>
+					<th>Proyecto</th>
 					</tr>
 				</thead>
 				
@@ -76,33 +46,6 @@ function Requirement(props) {
 					<td>price</td>
 					<td>state</td>
 					<td>project</td>
-					</tr>
-
-				</tbody>
-
-				<tbody>
-
-					<tr>
-					<td>name2</td>
-					<td>description2</td>
-					<td>developer2</td>
-					<td>price2</td>
-					<td>state2</td>
-					<td>project2</td>
-					</tr>
-					
-
-				</tbody>
-
-				<tbody>
-
-					<tr>
-					<td>name3</td>
-					<td>description3</td>
-					<td>developer3</td>
-					<td>price3</td>
-					<td>state3</td>
-					<td>project3</td>
 					</tr>
 
 				</tbody>

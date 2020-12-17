@@ -6,14 +6,15 @@ import { Navbar, Nav, Form, FormControl, Button, Container, Row, Col, Card } fro
 import Login from "./Login.js";
 import Cliente from "./Cliente.js";
 import Analista from "./Analista.js";
-//import DesarrolladorInterno from "./DesarrolladorInterno.js";
-//import DesarrolladorExtern from "./DesarrolladorExtern.js";
-//import JefeDeProyecto from "./JefeDeProyecto.js";
+import DesarrolladorInterno from "./DesarrolladorInterno.js";
+import DesarrolladorExterno from "./DesarrolladorExterno.js";
+import JefeDeProyecto from "./JefeDeProyecto.js";
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Link
 } from 'react-router-dom';
 
 function App() {
@@ -40,6 +41,18 @@ function App() {
 
           <Route path="/Analista">
             <Analista />
+          </Route>
+
+          <Route path="/DesarrolladorExterno">
+            <DesarrolladorExterno />
+          </Route>
+
+          <Route path="/DesarrolladorInterno">
+            <DesarrolladorInterno />
+          </Route>
+
+          <Route path="/JefeDeProyecto">
+            <JefeDeProyecto />
           </Route>
 
           

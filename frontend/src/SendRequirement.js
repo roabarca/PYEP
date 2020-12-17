@@ -1,7 +1,6 @@
 import React, { useState} from 'react';
 import axios from 'axios';
 import {Form, Button, Alert} from 'react-bootstrap';
-//import {fetchRequirements} from '/redux/actions/requerimentAction.js';
 
 function SendRequirement(props) {
 	
@@ -37,12 +36,12 @@ function SendRequirement(props) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		axios.post("http://localhost:4000/analyst/requirement/add", {
-			name: name,
-			description: description,
-			developer: developer,
-			price: price,
-			project: project
+		axios.post("http://localhost:4000/requeriments", {
+		name: name,
+        description: description,
+        developer: developer,
+        price: price,
+		project: project
 		
 		}).then((data) => {
 

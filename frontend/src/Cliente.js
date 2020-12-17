@@ -1,6 +1,3 @@
-/*ver avance del proyecto
-hacer comentariios
-aprobar o rechazar*/
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -25,12 +22,12 @@ function Cliente() {
           <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="#home">Proyecto</Navbar.Brand>
             <Nav className="mr-auto">
-              <Nav.Link as={Link} to="/Proyecto">Proyecto</Nav.Link>    
+              <Nav.Link as={Link} to="/Proyect">Proyecto</Nav.Link>    
             </Nav> 
           </Navbar>
           
           <Switch>              
-            <Route path="/Proyecto">
+            <Route path="/Proyect">
               <Proyect />
               <Commentary />
               <LikeCliente />

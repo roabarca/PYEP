@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {Form, Button, Alert} from 'react-bootstrap';
 
-function Commentary(props){
+function Ofertas(props){
 	
 	const [message, setMessage] = useState('');
 	const [estado, setEstado] = useState('');
@@ -42,4 +42,4 @@ function Commentary(props){
 	);
 }
 
-export default Commentary;
+export default Ofertas;

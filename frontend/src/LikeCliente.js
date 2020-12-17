@@ -38,11 +38,11 @@ function LikeCliente(props) {
 		  <Form>
 			  
 		  <Button onClick={handleStateA} variant="primary" type="submit">
-		    Aceptar
+		    Aceptar estado actual
 		  </Button>
 
 		  <Button onClick={handleStateR} variant="primary" type="submit">
-		    Rechazar
+		    Rechazar estado actual
 		  </Button>
 
 		  </Form>

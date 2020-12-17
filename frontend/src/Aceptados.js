@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 import axios from 'axios';
 import {ListGroup,Tab,Row,Col} from "react-bootstrap";
 
-function Proyect(props) {
+function Aceptados(props) {
 	
 	//hay que hacer el axios
 	return (
@@ -12,10 +12,9 @@ function Proyect(props) {
 					<tr>
 					{/*en la conexion debe diferenciarse usuario y
 					analista, mediante los submit*/}
-					<th>Nombre</th>
+					<th>N° Requisito</th>
 					<th>Estado Actual</th>
-					<th>Estado Futuro</th>
-					<th>Estado</th>
+					<th>Descripcion</th>
 					<th>Proyecto</th>
 					</tr>
 				</thead>
@@ -25,8 +24,7 @@ function Proyect(props) {
 					<tr>
 					<td>name</td>
 					<td>actualstate</td>
-					<td>futurestate</td>
-					<td>state</td>
+					<td>description</td>
 					<td>project</td>
 					</tr>
 
@@ -37,4 +35,4 @@ function Proyect(props) {
 }
 
 
-export default Proyect;
+export default Aceptados;

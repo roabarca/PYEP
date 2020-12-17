@@ -28,14 +28,14 @@ function Analista() {
           <Nav className="mr-auto">
             <Nav.Link as={Link} to="/Proyecto">Proyecto</Nav.Link>    
             <Nav.Link as={Link} to="/Requerimiento">Requerimientos</Nav.Link>
-            <Nav.Link as={Link} to="/Analyst/Register">Registrar cliente</Nav.Link>
+            <Nav.Link as={Link} to="/Analista/RegistrarCliente">Registrar cliente</Nav.Link>
           </Nav> 
         </Navbar>
         
         <Switch>              
           <Route path="/Proyecto">
-            <Create />
             <Proyect />
+            <Create />
             <LikeAnalista />
           </Route>
           
@@ -44,7 +44,7 @@ function Analista() {
             <SendRequirement />
           </Route>
 
-          <Route path="/Analyst/Register">
+          <Route path="/Analista/RegistrarCliente">
             <Register />
           </Route>
         </Switch>

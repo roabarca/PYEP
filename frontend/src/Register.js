@@ -25,7 +25,6 @@ function Register(props) {
 
 
 	const handleSubmit = (e) => {
-		
 		e.preventDefault();
 		axios.post("localhost:4000/analyst/register", {
 			email: email,
@@ -47,8 +46,12 @@ function Register(props) {
 					{estado}
 				</Alert>
 			)}
+		  <Form.Group controlId="formBasicEmail">
+		    <Form.Label>Email address</Form.Label>
+		    <Form.Control onChange={handleEmail} type="email" placeholder="Enter email" />
+		  </Form.Group>	
 
-		  <Form.Group controlId="formBasicUsername">
+		  <Form.Group>
 		    <Form.Label>Username</Form.Label>
 		    <Form.Control onChange={handleUsername} type="text" placeholder="Enter username" />
 		  </Form.Group>
@@ -57,11 +60,6 @@ function Register(props) {
 		    <Form.Label>Password</Form.Label>
 		    <Form.Control onChange={handlePass} type="password" placeholder="Password" />
 		  </Form.Group>
-
-		  <Form.Group >
-		    <Form.Label>Email address</Form.Label>
-		    <Form.Control onChange={handleEmail} type="email" placeholder="Enter email" />
-		  </Form.Group>	
 
 
 		  <Button onClick={handleSubmit} variant="primary" type="submit">

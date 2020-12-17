@@ -50,7 +50,7 @@ function Login(props) {
 			if(type=="Desarrollador Externo"){
 				window.location.href = "/DesarrolladorExterno";
 			}
-			if(type=="Desarrollador nterno"){
+			if(type=="Desarrollador Interno"){
 				window.location.href = "/DesarrolladorInterno";
 			}
 			if(type=="Jefe De Proyecto"){
