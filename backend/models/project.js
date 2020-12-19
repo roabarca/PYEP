@@ -43,7 +43,8 @@ module.exports = (sequelize, DataTypes) => {
     state: {
       allowNull: false,
       type: DataTypes.BOOLEAN,
-    }
+    },
+    progress: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Project',

@@ -15,7 +15,8 @@ app.use("/login", require("./routes/loginRoute.js"));
 app.use("/analyst", require("./routes/analistaRoute.js"));
 app.use("/client", require("./routes/clienteRoute.js"));
 app.use("/ProjectManager", require("./routes/jefedeproyectoRoute.js"));
-
+app.use("/ExternalDeveloper", require("./routes/deRoute.js"));
+app.use("/InternalDeveloper", require("./routes/diRoute.js"));
 
 app.listen(4000, () => {
     console.log("El servidor esta corriendo")}

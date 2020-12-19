@@ -26,9 +26,6 @@ module.exports = {
       price: {
         type: Sequelize.INTEGER
       },
-      progress: {
-        type: Sequelize.BOOLEAN
-      },
       finished: {
         allowNull: false,
         type: Sequelize.BOOLEAN

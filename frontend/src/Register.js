@@ -26,7 +26,7 @@ function Register(props) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		axios.post("localhost:4000/analyst/register", {
+		axios.post('http://localhost:4000/analyst/register', {
 			email: email,
 			password: password,
 			username: username
@@ -40,7 +40,10 @@ function Register(props) {
 	}
 
 	return (
+		<div className="App-header">
 		<Form>
+			
+			<div className="container-sm p-3 bg-dark text-white rounded">
 			{estado !== '' && (
 				<Alert variant={estado === 'OK' ? 'success' : 'danger'}>
 					{estado}
@@ -65,7 +68,9 @@ function Register(props) {
 		  <Button onClick={handleSubmit} variant="primary" type="submit">
 		    Registrar
 		  </Button>
+		  </div>
 		</Form>
+		</div>
 	);
 }
 

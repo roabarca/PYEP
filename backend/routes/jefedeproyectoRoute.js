@@ -64,7 +64,15 @@ router.put("/requirement/setDev", async (req, res) => {
             }
         })
         if(!dev) return res.status(400).send("Developer no existente");
-
+        if(!dev.internal){
+            one = Requirement.findOne({
+                where: {
+                    dev: req.body.dev,
+                    finished: false,
+                }
+            })
+            if(one) return res.status(400).send("No puedes poseer mas de un requisito");
+        }
         await requi.update({
             developer: req.body.dev},{
                 where: {

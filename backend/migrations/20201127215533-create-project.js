@@ -24,6 +24,9 @@ module.exports = {
           as: "project_manager",
         },
       },
+      progress: {
+        type: Sequelize.BOOLEAN
+      },
       client: {
         allowNull: false,
         type: Sequelize.STRING,

@@ -20,10 +20,11 @@ router.post("/add", async (req, res) => {
         const project = await Requirement.create({
             name: req.body.name,
             description: req.body.description,
-            developer: req.body.dev,
+            developer: req.body.developer,
             price: req.body.price,
             finished: false,
             project: req.body.project,
+            
         });
         return res.send(project);
     } catch (error) {
@@ -31,7 +32,7 @@ router.post("/add", async (req, res) => {
     }
 })
 
-router.put("/edit", async (req, res) => {
+router.put("/edit/:id", async (req, res) => {
     try {
         requi = await Requirement.findOne({
             where: {
@@ -47,7 +48,7 @@ router.put("/edit", async (req, res) => {
             price: req.body.price,
             project: req.body.project,
                 where: {
-                    id: req.body.id,
+                    id: req.params.id,
                 }
             })
         res.send(requi);
@@ -57,18 +58,18 @@ router.put("/edit", async (req, res) => {
 })
 
 
-router.delete("/delete", async (req, res) => {
+router.delete("/delete/:id", async (req, res) => {
     try {
         requi = await Requirement.findOne({
             where: {
-                id: req.body.id,
+                id: req.params.id,
             }
         })
         if(!requi) return res.status(400).send("Requisito no existente");
 
         await requi.destroy({
             where: {
-                id: req.body.id,
+                id: req.params.id,
             }
         })
         res.send(requi);

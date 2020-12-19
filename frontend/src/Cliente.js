@@ -10,9 +10,9 @@ import {
     Link
   } from 'react-router-dom';
 
-import Proyect from './Proyect.js';
+import Proyect from './ProyectoCliente.js';
 import Commentary from './Commentary.js';
-import LikeCliente from './LikeCliente.js';
+
 
 function Cliente() {
     return (
@@ -20,17 +20,18 @@ function Cliente() {
         
         <div className="Proyecto">
           <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href="#home">Proyecto</Navbar.Brand>
             <Nav className="mr-auto">
-              <Nav.Link as={Link} to="/Proyect">Proyecto</Nav.Link>    
+              <Nav.Link as={Link} to="/Cliente/Project">Proyecto</Nav.Link> 
+              <Nav.Link as={Link} to="/Cliente/Comment">Comentario</Nav.Link>  
             </Nav> 
           </Navbar>
           
           <Switch>              
-            <Route path="/Proyect">
-              <Proyect />
-              <Commentary />
-              <LikeCliente />
+            <Route path="/Cliente/Project">
+              <Proyect />              
+            </Route>
+            <Route path="/Cliente/Comment">
+                   <Commentary/>        
             </Route>
             
           </Switch>

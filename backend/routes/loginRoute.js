@@ -23,7 +23,6 @@ router.post("/", async (req, res) => {
                 },
             });
             authtoken = "auth-token-A";
-            message = "Ingresaste con un rol de Analista";
         }
         else if(valid.client){
             user = await Client.findOne({
@@ -32,7 +31,6 @@ router.post("/", async (req, res) => {
                 },
             });
             authtoken = "auth-token-C";
-            message = "Ingresaste con un rol de Cliente";
         }
         else if(valid.developer){
             user = await Developer.findOne({
@@ -41,7 +39,6 @@ router.post("/", async (req, res) => {
                 },
             });
             authtoken = "auth-token-D";
-            message = "Ingresaste con un rol de Desarrollador";
         }
         else if(valid.pm){
             user = await Project_manager.findOne({
@@ -50,17 +47,32 @@ router.post("/", async (req, res) => {
                 },
             });
             authtoken = "auth-token-JP";
-            message = "Ingresaste con un rol de Jefe de Proyecto";
         }
         const validpass = await bcrypt.compare(req.body.password, user.password);
         if(!validpass){
             return res.status(400).send("Clave incorrectas");
         }
         const token = jwt.sign({ id: valid.id }, process.env.SECRET_TOKEN);
-        return res.header(authtoken, token).send(message);
+        return res.header(authtoken, token).send(valid);
     } catch (error) {
         res.status(400).send(error);
     }
 });
+
+router.get("/getDev/:username", async (req,res) => {
+    try {
+        console.log(req.body.username);
+        user = await Developer.findOne({
+            where: {
+                username: req.params.username,
+            },
+        });
+        if(user.internal) return res.send("di");
+        return res.send("de");
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
+
 
 module.exports = router;

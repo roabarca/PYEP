@@ -4,10 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Navbar, Nav, Form, FormControl, Button, Container, Row, Col, Card } from 'react-bootstrap';
 import Register from "./Register.js";
-import Requirement from "./Requirement.js";
-import Create from './Create.js';
-import LikeAnalista from './LikeAnalista.js';
-import SendRequirement from './SendRequirement.js';
+import Requisito from "./Requirement.js";
 import Proyect from './Proyect.js';
 
 
@@ -23,11 +20,11 @@ function Analista() {
     <Router>
       
       <div className="Analista">
-        <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="#home">Analista</Navbar.Brand>
+        <Navbar bg="dark" variant="dark"> 
+        <Navbar.Brand href="/Analista">Analista</Navbar.Brand>         
           <Nav className="mr-auto">
             <Nav.Link as={Link} to="/Proyecto">Proyecto</Nav.Link>    
-            <Nav.Link as={Link} to="/Requerimiento">Requerimientos</Nav.Link>
+            <Nav.Link as={Link} to="/Requisito">Requisito</Nav.Link>
             <Nav.Link as={Link} to="/Analista/RegistrarCliente">Registrar cliente</Nav.Link>
           </Nav> 
         </Navbar>
@@ -35,13 +32,11 @@ function Analista() {
         <Switch>              
           <Route path="/Proyecto">
             <Proyect />
-            <Create />
-            <LikeAnalista />
           </Route>
           
-          <Route path="/Requerimiento">
-            <Requirement />
-            <SendRequirement />
+          <Route path="/Requisito">
+            <Requisito />
+            
           </Route>
 
           <Route path="/Analista/RegistrarCliente">

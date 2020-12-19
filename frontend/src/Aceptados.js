@@ -1,38 +1,83 @@
-import React, { useState, useEffects } from 'react';
-import Table from 'react-bootstrap/Table';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {ListGroup,Tab,Row,Col} from "react-bootstrap";
+import {makeStyles} from '@material-ui/core/styles';
+import {Table, TableContainer, TableHead, TableCell, TableBody, TableRow, Modal, Button, TextField} from '@material-ui/core';
+import Cookies from 'universal-cookie';
 
-function Aceptados(props) {
-	
-	//hay que hacer el axios
-	return (
-        <Table striped bordered hover variant="dark">
-				<thead>
-					<tr>
-					{/*en la conexion debe diferenciarse usuario y
-					analista, mediante los submit*/}
-					<th>N° Requisito</th>
-					<th>Estado Actual</th>
-					<th>Descripcion</th>
-					<th>Proyecto</th>
-					</tr>
-				</thead>
-				
-				<tbody>
 
-					<tr>
-					<td>name</td>
-					<td>actualstate</td>
-					<td>description</td>
-					<td>project</td>
-					</tr>
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    position: 'absolute',
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)'
+  },
+  iconos:{
+    cursor: 'pointer'
+  }, 
+  inputMaterial:{
+    width: '100%'
+  }
+}));
 
-				</tbody>
-		</Table>
-		
-	);
+function Aceptados() {
+const styles= useStyles();
+  const [data, setData]=useState([]);  
+  const cookies = new Cookies();
+
+  
+  const peticionGet=async()=>{
+    await axios.get('http://localhost:4000/InternalDeveloper/requirement/'+cookies.get('username'))
+    .then(res=>{
+      setData(res.data);
+    })
+  }
+
+	useEffect(async()=>{
+		await peticionGet();
+	},[])
+
+  return (
+    <div className="App-header">
+      <div className="container p-3 my-3 bg-light text-white rounded">
+     <TableContainer>
+       <Table>
+         <TableHead>
+           <TableRow>
+				<TableCell>ID</TableCell>
+				<TableCell> Nombre  </TableCell>
+				<TableCell> Descripcion </TableCell>
+				<TableCell> Desarrollador </TableCell>
+				<TableCell> Precio </TableCell>
+				<TableCell> Proyecto </TableCell>			
+				<TableCell> Finalizado  </TableCell>
+           </TableRow>
+         </TableHead>
+
+         <TableBody>
+           {data.map(project=>(
+             <TableRow key={project.id}>
+               <TableCell>{project.id}</TableCell>
+               <TableCell>{project.name}</TableCell>
+               <TableCell>{project.description}</TableCell>
+               <TableCell>{project.developer}</TableCell>
+			   <TableCell>{project.price}</TableCell>
+               <TableCell>{project.project}</TableCell>
+               
+			   <TableCell>{project.finished ? 'Si' : 'No'}</TableCell>              
+             </TableRow>
+           ))}
+         </TableBody>
+       </Table>
+     </TableContainer>
+     </div>
+    </div>
+  );
 }
-
 
 export default Aceptados;

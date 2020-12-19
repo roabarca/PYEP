@@ -3,11 +3,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Navbar, Nav, Form, FormControl, Button, Container, Row, Col, Card } from 'react-bootstrap';
-import Requirement from "./Requirement.js";
-import AsignarDesarrollador from './AsignarDesarrollador.js';
-import AsignarValor from './AsignarValor.js';
-import AsignarEstado from './AsignarEstado.js';
-
+import Requisito from "./Requirement.js";
+import Register from "./Register.js";
 import {
   BrowserRouter as Router,
   Switch,
@@ -23,17 +20,21 @@ function JefeDeProyecto() {
         <Navbar bg="dark" variant="dark">
           <Navbar.Brand href="#home">Jefe de Proyecto</Navbar.Brand>
           <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/Requisitos">Requisitos</Nav.Link>    
+            <Nav.Link as={Link} to="/Requisitos">Requisitos</Nav.Link> 
+            <Nav.Link as={Link} to="/RegistrarCliente">Registrar cliente</Nav.Link>   
           </Nav> 
         </Navbar>
         
         <Switch>              
           <Route path="/Requisitos">
-            <Requirement />
-            <AsignarValor />
-            <AsignarEstado />
-            <AsignarDesarrollador />
+            <Requisito />
+            
           </Route>
+       
+          <Route path="/RegistrarCliente">
+            <Register />
+          </Route>
+
         </Switch>
       </div>
     </Router>

@@ -26,7 +26,6 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     developer: DataTypes.STRING,
     price: DataTypes.INTEGER,
-    progress: DataTypes.INTEGER,
     finished: {
       allowNull: false,
       type: DataTypes.BOOLEAN,

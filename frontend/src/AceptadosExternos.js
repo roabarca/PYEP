@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Table, TableContainer, TableHead, TableCell, TableBody, TableRow, Button, TextField, Modal} from '@material-ui/core';
@@ -28,18 +29,18 @@ const useStyles = makeStyles((theme) => ({
   }));
   
 
-function Commentary(props) {
+function AceptadosExternos(props) {
     const styles= useStyles();
     const cookies = new Cookies();
 	const [data, setData] = useState([]);
 	const [modalEliminar, setModalEliminar]=useState(false);
 
-	const peticionesGet=async()=>{
-        await axios.get('http://localhost:4000/client/project/comment/'+cookies.get('username'))
-        .then(res=>{
-            setData(res.data);
-        })
-    }
+  const peticionesGet=async()=>{
+    await axios.get('http://localhost:4000/ExternalDeveloper/requirement/list/'+cookies.get('username'))
+    .then(res=>{
+      setData(res.data);
+    })
+  }
 
   
     useEffect(async()=>{
@@ -64,20 +65,30 @@ function Commentary(props) {
 		message: ''
 	})
 
-	const peticionDelete=async()=>{
-		console.log(projectSeleccionada.id);
-		await axios.delete('http://localhost:4000/client/project/comment/delete/'+projectSeleccionada.id)
-		.then(res=>{
-		  setData(data.filter(project=>project.id!==projectSeleccionada.id));
-		  abrirCerrarModalEliminar();
-		})
-	}
+	const peticionPut=async()=>{
+    console.log(projectSeleccionada.price);
+    await axios.put('http://localhost:4000/ExternalDeveloper/requirement/delete/'+projectSeleccionada.id, {
+      developer: cookies.get('username'),
+    
+    })
+    .then(res=>{
+      var dataNueva=data;
+      dataNueva.map(project=>{
+        if(projectSeleccionada.id===project.id){			
+			project.developer='';
+			project.price='';			
+        }
+      })
+      setData(dataNueva);
+      abrirCerrarModalEliminar();
+    })
+  }
 
 	const bodyEliminar=(
 		<div className={styles.modal}>
-		  <p>Estás seguro que deseas eliminar este comentario ? </p>
+		  <p>Estás seguro que deseas abandonar este requisito ? </p>
 		  <div align="right">
-			<Button color="secondary" onClick={()=>peticionDelete()} >Sí</Button>
+			<Button color="secondary" onClick={()=>peticionPut()} >Sí</Button>
 			<Button onClick={()=>abrirCerrarModalEliminar()}>No</Button>
 	
 		  </div>
@@ -95,23 +106,35 @@ function Commentary(props) {
 			
 				<TableHead>
 					<TableRow>
-						<TableCell> Proyecto  </TableCell>
-						<TableCell> Comentarios  </TableCell>
-						<TableCell> Eliminar Comentario </TableCell>
+          <TableCell>ID</TableCell>
+				<TableCell> Nombre  </TableCell>
+				<TableCell> Descripcion </TableCell>
+				<TableCell> Desarrollador </TableCell>
+				<TableCell> Precio </TableCell>
+				<TableCell> Proyecto </TableCell>			
+				<TableCell> Finalizado  </TableCell>
+        <TableCell> Eliminar  </TableCell>
 					</TableRow>
 				</TableHead>
 
 				<TableBody>
-					{data.map(message=>(
-						<TableRow Key={message.id}>
-							<TableCell>{message.project }</TableCell>
-							<TableCell>{message.message }</TableCell>
-							<TableCell>								
-								<Delete  className={styles.iconos} onClick={()=>seleccionarProject(message, 'Eliminar')}/>
-							</TableCell>
-											
-						</TableRow>
-					))}
+          {data.map(project=>(
+              <TableRow key={project.id}>
+                <TableCell>{project.id}</TableCell>
+                <TableCell>{project.name}</TableCell>
+                <TableCell>{project.description}</TableCell>
+                <TableCell>{project.developer}</TableCell>
+          <TableCell>{project.price}</TableCell>
+                <TableCell>{project.project}</TableCell>
+                
+          <TableCell>{project.finished ? 'Si' : 'No'}</TableCell> 
+            <TableCell>								
+								<Delete  className={styles.iconos} onClick={()=>seleccionarProject(project, 'Eliminar')}/>
+							</TableCell>     
+
+              </TableRow>
+            ))}
+					
 				</TableBody>
 			
 			</Table>
@@ -129,4 +152,4 @@ function Commentary(props) {
     )
 }
 
-export default Commentary;
+export default AceptadosExternos;
