@@ -1,4 +1,4 @@
-# Entrega 4 INF-236
+# Entrega Final INF-236
 ## Integrantes
 - Daniel Roco
 - Roberto Abarca
@@ -14,8 +14,6 @@ Se añadiran los usuarios de forma username;password (tipo)
 - user_de;123 (Desarrollador Externo)
 - user_di;123 (Desarrollador Interno)
 - user_jp;123 (Jefe de Proyecto)
-## Tokens
-Para utilizar ciertas funciones se pide que posea el token que se entrega al momento de hacer el login correspondiente, es por esto que se pide que se agrege de forma manual su token y su valor para poder acceder a las distintas funciones
 ## Inicio
 Para iniciar se utiliza dos consolas de modo de correr ambos servidores en simultaneo
 - npm start (desde la carpeta backend)
